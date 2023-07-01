@@ -4,7 +4,7 @@ import axios from "axios";
 import TransactionList from "@/components/TransactionLists";
 import SearchTransactionForm from "@/components/SearchTransactionForm";
 
-export default function Home() {
+export default function Explorer() {
   const [loading, setLoading] = useState(false);
   const [transactionList, setTransactionList] = useState([]);
   const [balance, setBalance] = useState(null);
@@ -28,7 +28,7 @@ export default function Home() {
     } catch (error) {
       console.log("client", error);
       setErrorMessage(
-        error?.response.data?.message ||
+        error?.response?.data?.message ||
           "Unable to fetch transactions. Please try again later."
       );
     } finally {
@@ -38,11 +38,8 @@ export default function Home() {
   };
   return (
     <>
-      <Head>
-        <title>Solan Producer AirDrop</title>
-      </Head>
       <main className="w-full h-full max-w-2xl p-6 flex flex-col items-center justify-between gap-6 mx-auto relative">
-        <h1 className="text-2xl">Producer Airdrop</h1>
+        {/* <h1 className="text-2xl">Producer Airdrop</h1> */}
         <SearchTransactionForm
           handleFormSubmit={handleFormSubmit}
           address={address}
